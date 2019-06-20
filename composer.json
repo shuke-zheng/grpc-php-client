@@ -1,0 +1,21 @@
+{
+  "name": "grpc-php-client",
+  "authors": [
+    {
+      "name": "zhengxiaojun",
+      "email": "zhengxiaojun@donews.com"
+    }
+  ],
+  "require": {
+    "grpc/grpc": "^v1.19.0",
+    "google/protobuf": "^v3.8.0"
+  },
+  "autoload":{
+    "psr-4":{
+      "GPBMetadata\\":"GPBMetadata/",
+      "Ad\\":"Ad/"
+    }
+  }
+}
+
+

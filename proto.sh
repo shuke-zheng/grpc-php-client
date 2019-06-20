@@ -1,0 +1,1 @@
+protoc --proto_path=./ --php_out=.  --plugin=protoc-gen-grpc  rawAd.proto
