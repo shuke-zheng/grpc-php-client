@@ -28,23 +28,23 @@ class RawAdClient extends BaseStub
      * @param array       $options
      * @return \Grpc\UnaryCall
      */
-    public function Query(AdObject $adObject, $metadata = [], $options = [])
+    public function Query(\Ad\Request $request, $metadata = [], $options = [])
     {
         return $this->_simpleRequest(
-            'ad.RawAd/Query',
-            $adObject,
-            [\Ad\AdObject::class, 'decode'],
+            '/ad.RawAd/Query',
+            $request,
+            ['\Ad\Reply', 'decode'],
             $metadata,
             $options
         );
     }
 
-    public function GlobalQuery(GlobalAdObject $globalAdObject, $metadata = [], $options = [])
+    public function GlobalQuery(\Ad\Request $request, $metadata = [], $options = [])
     {
         return $this->_simpleRequest(
             '/ad.RawAd/GlobalQuery',
-            $globalAdObject,
-            [GlobalAdObject::class, 'decode'],
+            $request,
+            ['\Ad\GlobalReply', 'decode'],
             $metadata,
             $options
         );
