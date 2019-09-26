@@ -1,10 +1,10 @@
 GRPC
 ====
 #### 下载protoc
-`https://github.com/protocolbuffers/protobuf/releases`
+url [https://github.com/protocolbuffers/protobuf/releases]
 
 grpc php版本客户端.   
-server: [https://glab.tagtic.cn/AdsGroup/hotniuer_n]
+server: `https://glab.tagtic.cn/AdsGroup/hotniuer_n`
 
 #### 从server端拷贝proto文件
 
