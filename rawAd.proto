@@ -4,252 +4,355 @@ package ad;
 
 //The Ad service definition.
 service RawAd {
- rpc Query (Request) returns (Reply);
- rpc GlobalQuery (Request) returns (GlobalReply);
-}
-message MaterialObject {
-	string path = 1;
-	string ad_title = 2;
-	int32 group = 3;
-	string group_id = 4;
-	int32 width = 5;
-	int32 height = 6;
-	string spread_name = 7;
-	map<string,string> annotations = 8;
+    rpc Query (Request) returns (Reply);
+    rpc GlobalQuery (Request) returns (GlobalReply);
+    rpc AllianceQuery (Request) returns (AllianceReply);
 }
 
+service Callback {
+    rpc OutOfBudgetCallback(CallbackServiceRequest) returns (CallbackServiceReply);
+    rpc NormalCallback(CallbackServiceRequest) returns (CallbackServiceReply);
+}
+
+service Finance {
+    rpc GetBalance(GetBalanceRequest) returns (GetBalanceReply);
+}
+
+message MaterialObject {
+    string path = 1;
+    string ad_title = 2;
+    string group_id = 4;
+    int32 width = 5;
+    int32 height = 6;
+    string spread_name = 7;
+    map<string,string> annotations = 8;
+}
 
 message TimeObject {
-	string date = 1;
-	message Time {
-		int32 start = 1;
-		int32 end = 2;
-	}
-	repeated Time time = 2;
+    string date = 1;
+    message Time {
+        int32 start = 1;
+        int32 end = 2;
+    }
+    repeated Time time = 2;
 }
+message CreativeObject {
+    string creative_id = 1;
+    string creative_name = 2;
+    string ad_url = 3;
+    string landing_page_pic = 4;
+    int32 monitor_type = 5;
+    string monitor_urls = 6;
+    string monitor_pv_urls = 7;
+    string title = 8;
+    string spread_name = 9;
+    string content = 10;
+    string apk_name = 11;
+    CreateType create_type = 12;
+    map<string,string> annotations = 13;
+    message Materials {
+        string path = 1;
+        string scale = 2;
+        int32 width = 3;
+        int32 height = 4;
+        map<string,string> annotations = 5;
+    }
+    repeated Materials materials = 14;
+}
+
 enum Information{
-	UNKNOWN_INFOMATION = 0;
-	SMALL = 1;
-	GROUP = 2;
-	BIG = 3;
+    UNKNOWN_INFOMATION = 0;
+    SMALL = 1;
+    GROUP = 2;
+    BIG = 3;
 }
 enum MPlay {
-	UNKNOWN_MPLAY = 0;
-	DAY_ROLL = 1;
-	MATERIAL_ROLL = 2;
+    UNKNOWN_MPLAY = 0;
+    DAY_ROLL = 1;
+    MATERIAL_ROLL = 2;
 }
 enum MonitorType {
-	NONE = 0;
-	MIAOZHEN = 1;
-	ADMASTER = 2;
-	REYUN = 3;
-	TALKINGDATA = 4;
+    NONE = 0;
+    MIAOZHEN = 1;
+    ADMASTER = 2;
+    REYUN = 3;
+    TALKINGDATA = 4;
 }
 enum Carousel {
-	UNKNOWN_CAROUSEL = 0;
-	QUARTER = 1;
-	HALF = 2;
-	THREEQUATERS = 3;
-	FULL = 4;
+    UNKNOWN_CAROUSEL = 0;
+    QUARTER = 1;
+    HALF = 2;
+    THREEQUATERS = 3;
+    FULL = 4;
 }
 enum Distribution{
-	UNKNOWN_DISTRIBUTION = 0;
-	EVEN = 1;
-	UNEVEN = 2;
+    UNKNOWN_DISTRIBUTION = 0;
+    EVEN = 1;
+    UNEVEN = 2;
 }
 enum CreateType {
-	UNKNOWN_CREATETYPE = 0;
-	IMAGE = 1;
-	VIDEO = 2;
+    UNKNOWN_CREATETYPE = 0;
+    IMAGE = 1;
+    VIDEO = 2;
 }
 enum AdFrom {
-	UNKNOWN_ADFROM = 0;
-	BAIDU = 1;
-	GOOGLE = 2;
-	TOUTIAO = 3;
-	INVENO = 4;
-	GUANGDIANTONG = 5;
-	BAIDU_HYBRID = 6;
-	KEDAXUNFEI = 7;
-	INMOBI = 8;
+    UNKNOWN_ADFROM = 0;
+    BAIDU = 1;
+    GOOGLE = 2;
+    TOUTIAO = 3;
+    INVENO = 4;
+    GUANGDIANTONG = 5;
+    BAIDU_HYBRID = 6;
+    KEDAXUNFEI = 7;
+    INMOBI = 8;
 }
 enum JumpType {
-	UNKNOWN_JUMPTYPE = 0;
-	CLICK = 1;
-	APK_DOWNLOAD = 2;
+    UNKNOWN_JUMPTYPE = 0;
+    CLICK = 1;
+    APK_DOWNLOAD = 2;
 }
 enum NetworkWay {
-	UNKNOWN_NETWORKWAY = 0;
-	WIFI = 1;
-	_4G = 2;
-	_3G = 3;
-	_2G = 4;
+    UNKNOWN_NETWORKWAY = 0;
+    WIFI = 1;
+    _4G = 2;
+    _3G = 3;
+    _2G = 4;
 }
 enum Operator{
-	UNKNOWN_OPERATOR = 0;
-	UNICOM = 1;
-	MOBILE = 2;
-	TELECOM = 3;
+    UNKNOWN_OPERATOR = 0;
+    UNICOM = 1;
+    MOBILE = 2;
+    TELECOM = 3;
 }
 enum MediaID {
-	UNKNOWN_MEDIAID = 0;
-	IOS = 1;
-	HUAWEI = 2;
-	XIOAMI = 3;
-	SAMSUNG = 4;
-	JINLI = 5;
-	KUPAI = 6;
-	OPPO = 7;
-	VIVO = 8;
-	MEIZU = 9;
-	LENOVO = 10;
-	LESHI = 11;
-	ZHONGXING = 12;
-	NOKIA = 13;
-	HTC = 14;
-	XIAOLAJIAO = 15;
-	NUBIYA = 16;
-	HAXIN = 17;
-	TCL = 18;
-	SONY = 19;
+    UNKNOWN_MEDIAID = 0;
+    IOS = 1;
+    HUAWEI = 2;
+    XIOAMI = 3;
+    SAMSUNG = 4;
+    JINLI = 5;
+    KUPAI = 6;
+    OPPO = 7;
+    VIVO = 8;
+    MEIZU = 9;
+    LENOVO = 10;
+    LESHI = 11;
+    ZHONGXING = 12;
+    NOKIA = 13;
+    HTC = 14;
+    XIAOLAJIAO = 15;
+    NUBIYA = 16;
+    HAXIN = 17;
+    TCL = 18;
+    SONY = 19;
 }
 enum PlatformType {
-	ADMIN = 0;
-	AGENT = 1;
-	KA = 2;
-	ADVERTISER = 3;
+    ADMIN = 0;
+    AGENT = 1;
+    KA = 2;
+    ADVERTISER = 3;
+}
+//流量类型
+enum FlowType {
+    UNKNOWN_FLOWTYPE = 0;
+    FLOWTYPE_APP = 1;
+    FLOWTYPE_PC = 2;
+    FLOWTYPE_WAP = 3;
+}
+//投放终端
+enum PortType {
+    UNKNOWN_PORTTYPE = 0;
+    PORTTYPE_IOS = 1;
+    PORTTYPE_ANDROID = 2;
+    PORTTYPE_PC = 3;
+    PORTTYPE_WAP = 4;
+    PORTTYPE_DESKTOP_CLIENT = 5;
+}
+
+enum Media {
+    UNKNOWN_MEDIA = 0;
+    MEDIA_YINLI = 1;
+    MEDIA_NGA = 2;
+    MEDIA_A9VG = 3;
+    MEDIA_178 = 4;
+    MEDIA_TGBUS = 5;
+    MEDIA_RENREN = 6;
+    MEDIA_RENRENLIVE = 7;
+    MEDIA_DONEWS = 8;
+    MEDIA_PTBUS = 9;
+    MEDIA_BIGFOOT = 10;
+    MEDIA_INVENO = 11;
+}
+
+enum PlaceAttribute {
+    UNKNOWN_PLACEATTRIBUTE = 0;
+    KAIPING = 1;
+    XINXILIU = 2;
+    BANNER = 3;
+    CHAPING = 4;
+    QIANRU = 5;
+    TU = 6;
+    XUANFU = 7;
+    WENZILIAN = 8;
+    HENGFU = 9;
 }
 
 message AdObject {
-	string ad_id = 1;
-	string ad_name = 2;
-	string order_id = 3;
-	Information information = 4;
-	string ad_url = 5;
-	int64 ad_throw_num = 6;
-	repeated TimeObject time = 7;
-	string monitor_urls = 8;
-	string monitor_pv_urls = 9;
-	MPlay m_play = 10;
-	repeated int32 provinces = 11 [packed=true];
-	MonitorType monitor_type = 12;
-	int64 amount_investment = 15;
-	float bidding = 16;
-	Carousel carousel = 17;
-	map<string,int64> plan_by_date = 18;
-	Distribution plan_day_type = 19;
-	Distribution plan_hour_type = 20;
-	CreateType create_type = 21;
-	AdFrom ad_from = 22;
-	JumpType jump_type = 23;
-	string spread_name = 24;
-	string union_ad_place_id = 25;
-	string union_ad_js = 26;
-	int32 union_ad_width = 27;
-	int32 union_ad_height = 28;
-	string apk_name = 29;
-	repeated NetworkWay network_way = 30 [packed=true];
-	repeated Operator operator = 31 [packed=true];
-	repeated MediaID media_ids = 32 [packed=true];
-	//bool is_oriented = 33;
-	repeated int32 version_oriented = 34 [packed=true];
-	//bool is_black_white = 35;
-	repeated MaterialObject materials = 36;
-	int32 advertiser_id = 37;
-	int64 throw_num = 38;
-	//int32 channel = 39;
-	//int32 ad_id_code = 40;
-	//int32 position_type = 41;
-	//int32 location_id = 42;
-	int32 cpm_bid_floor = 43;
-	int32 cpc_bid_floor = 44;
-	//float discount = 45;
-	float coefficient = 46;
-	string payment = 47;
-	string black_white_redis_key = 48;
-	string ad_content = 49;
-	int32 position = 50;
-	PlatformType platform_type = 51;
-	int32 cpm_num = 52;
-	int32 click_num = 53;
-	int32 width = 54;
-	int32 height = 55;
-	map<string,string> annotations = 56;
+    string ad_id = 1;
+    string ad_name = 2;
+    string order_id = 3;
+    Information information = 4;
+    string ad_url = 5;
+    repeated TimeObject time = 7;
+    string monitor_urls = 8;
+    string monitor_pv_urls = 9;
+    MPlay m_play = 10;
+    repeated int32 provinces = 11 [packed=true];
+    MonitorType monitor_type = 12;
+    int64 amount_investment = 15;
+    float bidding = 16;
+    Carousel carousel = 17;
+    Distribution plan_hour_type = 20;
+    CreateType create_type = 21;
+    AdFrom ad_from = 22;
+    JumpType jump_type = 23;
+    string spread_name = 24;
+    string union_ad_place_id = 25;
+    string union_ad_js = 26;
+    int32 union_ad_width = 27;
+    int32 union_ad_height = 28;
+    string apk_name = 29;
+    repeated NetworkWay network_way = 30 [packed=true];
+    repeated Operator operator = 31 [packed=true];
+    repeated MediaID media_ids = 32 [packed=true];
+    repeated int32 version_oriented = 34 [packed=true];
+    repeated MaterialObject materials = 36;
+    int32 advertiser_id = 37;
+    int32 cpm_bid_floor = 43;
+    int32 cpc_bid_floor = 44;
+    float coefficient = 46;
+    string payment = 47;
+    string black_white_redis_key = 48;
+    string ad_content = 49;
+    int32 position = 50;
+    PlatformType platform_type = 51;
+    int32 cpm_num = 52;
+    int32 click_num = 53;
+    int32 width = 54;
+    int32 height = 55;
+    map<string,string> annotations = 56;
+    string cities = 60;
+    int32 censorship_rating = 61;
+    int64 ad_budget = 62;
+    string oriented_redis_key = 63;
 }
 
 message GlobalAdObject {
-	message PotentialPlace {
-		int32 id = 1;
-		float cpm_bid_floor = 2;
-		map<string,string> annotations = 3;
-		int32 width = 4;
-		int32 height = 5;
-	}
-	string ad_id = 1;
-	string ad_name = 2;
-	string order_id = 3;
-	Information information = 4;
-	string ad_url = 5;
-	int64 ad_throw_num = 6;
-	repeated TimeObject time = 7;
-	string monitor_urls = 8;
-	string monitor_pv_urls = 9;
-	MPlay m_play = 10;
-	repeated int32 provinces = 11 [packed=true];
-	MonitorType monitor_type = 12;
-	int64 amount_investment = 15;
-	float bidding = 16;
-	Carousel carousel = 17;
-	map<string,int64> plan_by_date = 18;
-	Distribution plan_day_type = 19;
-	Distribution plan_hour_type = 20;
-	CreateType create_type = 21;
-	AdFrom ad_from = 22;
-	JumpType jump_type = 23;
-	// string spread_name = 24;
-	string union_ad_place_id = 25;
-	string union_ad_js = 26;
-	int32 union_ad_width = 27;
-	int32 union_ad_height = 28;
-	string apk_name = 29;
-	repeated NetworkWay network_way = 30 [packed=true];
-	repeated Operator operator = 31 [packed=true];
-	repeated MediaID media_ids = 32 [packed=true];
-	//bool is_oriented = 33;
-	repeated int32 version_oriented = 34 [packed=true];
-	//bool is_black_white = 35;
-	repeated MaterialObject materials = 36;
-	int32 advertiser_id = 37;
-	int64 throw_num = 38;
-	//int32 channel = 39;
-	//int32 ad_id_code = 40;
-	//int32 position_type = 41;
-	//int32 location_id = 42;
-	// int32 cpm_bid_floor = 43;
-	// int32 cpc_bid_floor = 44;
-	//float discount = 45;
-	// float coefficient = 46;
-	string payment = 47;
-	string black_white_redis_key = 48;
-	// string ad_content = 49;
-	repeated PotentialPlace position = 50;
-	PlatformType platform_type = 51;
-	int32 cpm_num = 52;
-	int32 click_num = 53;
-	// int32 width = 54;
-	// int32 height = 55;
-	map<string,string> annotations = 56;
+    message PotentialPlace {
+        int32 id = 1;
+        float cpm_bid_floor = 2;
+        map<string,string> annotations = 3;
+        int32 width = 4;
+        int32 height = 5;
+    }
+    string ad_id = 1;
+    string ad_name = 2;
+    string order_id = 3;
+    Information information = 4;
+    repeated TimeObject time = 7;
+    MPlay m_play = 10;
+    repeated int32 provinces = 11 [packed=true];
+    int64 amount_investment = 15;
+    float bidding = 16;
+    Carousel carousel = 17;
+    Distribution plan_hour_type = 20;
+    AdFrom ad_from = 22;
+    JumpType jump_type = 23;
+    string union_ad_place_id = 25;
+    string union_ad_js = 26;
+    int32 union_ad_width = 27;
+    int32 union_ad_height = 28;
+    string apk_name = 29;
+    repeated NetworkWay network_way = 30 [packed=true];
+    repeated Operator operator = 31 [packed=true];
+    repeated MediaID media_ids = 32 [packed=true];
+    repeated int32 version_oriented = 34 [packed=true];
+    int32 advertiser_id = 37;
+    string payment = 47;
+    string black_white_redis_key = 48;
+    repeated PotentialPlace position = 50;
+    PlatformType platform_type = 51;
+    int32 cpm_num = 52;
+    int32 click_num = 53;
+    map<string,string> annotations = 56;
+    string cities = 60;
+    int32 censorship_rating = 61;
+    int64 ad_budget = 62;
+    string oriented_redis_key = 63;
+    repeated CreativeObject creative = 66;
+}
+// 联盟广告
+message AllianceAdObject {
+    string ad_id = 1;
+    string ad_name = 2;
+    string order_id = 3;
+    Information information = 4;
+    repeated TimeObject time = 7;
+    MPlay m_play = 10;
+    repeated int32 provinces = 11 [packed=true];
+    float bidding = 16;
+    Distribution plan_hour_type = 20;
+    CreateType create_type = 21;
+    AdFrom ad_from = 22;
+    JumpType jump_type = 23;
+    string union_ad_place_id = 25;
+    string union_ad_js = 26;
+    int32 union_ad_width = 27;
+    int32 union_ad_height = 28;
+    int32 advertiser_id = 37;
+    string payment = 47;
+    int32 position = 50;
+    PlatformType platform_type = 51;
+    int32 cpm_num = 52;
+    int32 click_num = 53;
+    map<string,string> annotations = 56;
+    int64 ad_budget = 62;
+    string union_app_id = 64;
+    int32 union_alliance_type = 65;
 }
 //返回体
 message Reply {
-	repeated AdObject data = 1;
+    repeated AdObject data = 1;
 }
 
 //通投广告返回体
 message GlobalReply {
-	repeated GlobalAdObject global_data = 1;
+    repeated GlobalAdObject global_data = 1;
+}
+
+//联盟广告返回体
+message AllianceReply {
+    repeated AllianceAdObject alliance_data = 1;
 }
 
 //空请求体即可满足要求
 message Request {
+}
+
+//通知PHP预算消耗完了
+message CallbackServiceRequest{
+    string ad_id = 1;
+    string slot_binding = 2;
+}
+
+message CallbackServiceReply{
+    bool ok = 1;
+}
+
+message GetBalanceRequest{
+    int32 advertiser_id = 1;
+}
+
+message GetBalanceReply{
+    int64 balance = 1;
 }

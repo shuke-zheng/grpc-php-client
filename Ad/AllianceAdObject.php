@@ -9,9 +9,11 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>ad.GlobalAdObject</code>
+ * 联盟广告
+ *
+ * Generated from protobuf message <code>ad.AllianceAdObject</code>
  */
-class GlobalAdObject extends \Google\Protobuf\Internal\Message
+class AllianceAdObject extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>string ad_id = 1;</code>
@@ -42,21 +44,17 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
      */
     private $provinces;
     /**
-     * Generated from protobuf field <code>int64 amount_investment = 15;</code>
-     */
-    private $amount_investment = 0;
-    /**
      * Generated from protobuf field <code>float bidding = 16;</code>
      */
     private $bidding = 0.0;
     /**
-     * Generated from protobuf field <code>.ad.Carousel carousel = 17;</code>
-     */
-    private $carousel = 0;
-    /**
      * Generated from protobuf field <code>.ad.Distribution plan_hour_type = 20;</code>
      */
     private $plan_hour_type = 0;
+    /**
+     * Generated from protobuf field <code>.ad.CreateType create_type = 21;</code>
+     */
+    private $create_type = 0;
     /**
      * Generated from protobuf field <code>.ad.AdFrom ad_from = 22;</code>
      */
@@ -82,26 +80,6 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
      */
     private $union_ad_height = 0;
     /**
-     * Generated from protobuf field <code>string apk_name = 29;</code>
-     */
-    private $apk_name = '';
-    /**
-     * Generated from protobuf field <code>repeated .ad.NetworkWay network_way = 30 [packed = true];</code>
-     */
-    private $network_way;
-    /**
-     * Generated from protobuf field <code>repeated .ad.Operator operator = 31 [packed = true];</code>
-     */
-    private $operator;
-    /**
-     * Generated from protobuf field <code>repeated .ad.MediaID media_ids = 32 [packed = true];</code>
-     */
-    private $media_ids;
-    /**
-     * Generated from protobuf field <code>repeated int32 version_oriented = 34 [packed = true];</code>
-     */
-    private $version_oriented;
-    /**
      * Generated from protobuf field <code>int32 advertiser_id = 37;</code>
      */
     private $advertiser_id = 0;
@@ -110,13 +88,9 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
      */
     private $payment = '';
     /**
-     * Generated from protobuf field <code>string black_white_redis_key = 48;</code>
+     * Generated from protobuf field <code>int32 position = 50;</code>
      */
-    private $black_white_redis_key = '';
-    /**
-     * Generated from protobuf field <code>repeated .ad.GlobalAdObject.PotentialPlace position = 50;</code>
-     */
-    private $position;
+    private $position = 0;
     /**
      * Generated from protobuf field <code>.ad.PlatformType platform_type = 51;</code>
      */
@@ -134,25 +108,17 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
      */
     private $annotations;
     /**
-     * Generated from protobuf field <code>string cities = 60;</code>
-     */
-    private $cities = '';
-    /**
-     * Generated from protobuf field <code>int32 censorship_rating = 61;</code>
-     */
-    private $censorship_rating = 0;
-    /**
      * Generated from protobuf field <code>int64 ad_budget = 62;</code>
      */
     private $ad_budget = 0;
     /**
-     * Generated from protobuf field <code>string oriented_redis_key = 63;</code>
+     * Generated from protobuf field <code>string union_app_id = 64;</code>
      */
-    private $oriented_redis_key = '';
+    private $union_app_id = '';
     /**
-     * Generated from protobuf field <code>repeated .ad.CreativeObject creative = 66;</code>
+     * Generated from protobuf field <code>int32 union_alliance_type = 65;</code>
      */
-    private $creative;
+    private $union_alliance_type = 0;
 
     /**
      * Constructor.
@@ -167,34 +133,25 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
      *     @type \Ad\TimeObject[]|\Google\Protobuf\Internal\RepeatedField $time
      *     @type int $m_play
      *     @type int[]|\Google\Protobuf\Internal\RepeatedField $provinces
-     *     @type int|string $amount_investment
      *     @type float $bidding
-     *     @type int $carousel
      *     @type int $plan_hour_type
+     *     @type int $create_type
      *     @type int $ad_from
      *     @type int $jump_type
      *     @type string $union_ad_place_id
      *     @type string $union_ad_js
      *     @type int $union_ad_width
      *     @type int $union_ad_height
-     *     @type string $apk_name
-     *     @type int[]|\Google\Protobuf\Internal\RepeatedField $network_way
-     *     @type int[]|\Google\Protobuf\Internal\RepeatedField $operator
-     *     @type int[]|\Google\Protobuf\Internal\RepeatedField $media_ids
-     *     @type int[]|\Google\Protobuf\Internal\RepeatedField $version_oriented
      *     @type int $advertiser_id
      *     @type string $payment
-     *     @type string $black_white_redis_key
-     *     @type \Ad\GlobalAdObject\PotentialPlace[]|\Google\Protobuf\Internal\RepeatedField $position
+     *     @type int $position
      *     @type int $platform_type
      *     @type int $cpm_num
      *     @type int $click_num
      *     @type array|\Google\Protobuf\Internal\MapField $annotations
-     *     @type string $cities
-     *     @type int $censorship_rating
      *     @type int|string $ad_budget
-     *     @type string $oriented_redis_key
-     *     @type \Ad\CreativeObject[]|\Google\Protobuf\Internal\RepeatedField $creative
+     *     @type string $union_app_id
+     *     @type int $union_alliance_type
      * }
      */
     public function __construct($data = NULL) {
@@ -357,28 +314,6 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 amount_investment = 15;</code>
-     * @return int|string
-     */
-    public function getAmountInvestment()
-    {
-        return $this->amount_investment;
-    }
-
-    /**
-     * Generated from protobuf field <code>int64 amount_investment = 15;</code>
-     * @param int|string $var
-     * @return $this
-     */
-    public function setAmountInvestment($var)
-    {
-        GPBUtil::checkInt64($var);
-        $this->amount_investment = $var;
-
-        return $this;
-    }
-
-    /**
      * Generated from protobuf field <code>float bidding = 16;</code>
      * @return float
      */
@@ -401,28 +336,6 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.ad.Carousel carousel = 17;</code>
-     * @return int
-     */
-    public function getCarousel()
-    {
-        return $this->carousel;
-    }
-
-    /**
-     * Generated from protobuf field <code>.ad.Carousel carousel = 17;</code>
-     * @param int $var
-     * @return $this
-     */
-    public function setCarousel($var)
-    {
-        GPBUtil::checkEnum($var, \Ad\Carousel::class);
-        $this->carousel = $var;
-
-        return $this;
-    }
-
-    /**
      * Generated from protobuf field <code>.ad.Distribution plan_hour_type = 20;</code>
      * @return int
      */
@@ -440,6 +353,28 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \Ad\Distribution::class);
         $this->plan_hour_type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ad.CreateType create_type = 21;</code>
+     * @return int
+     */
+    public function getCreateType()
+    {
+        return $this->create_type;
+    }
+
+    /**
+     * Generated from protobuf field <code>.ad.CreateType create_type = 21;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setCreateType($var)
+    {
+        GPBUtil::checkEnum($var, \Ad\CreateType::class);
+        $this->create_type = $var;
 
         return $this;
     }
@@ -577,116 +512,6 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string apk_name = 29;</code>
-     * @return string
-     */
-    public function getApkName()
-    {
-        return $this->apk_name;
-    }
-
-    /**
-     * Generated from protobuf field <code>string apk_name = 29;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setApkName($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->apk_name = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.NetworkWay network_way = 30 [packed = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
-     */
-    public function getNetworkWay()
-    {
-        return $this->network_way;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.NetworkWay network_way = 30 [packed = true];</code>
-     * @param int[]|\Google\Protobuf\Internal\RepeatedField $var
-     * @return $this
-     */
-    public function setNetworkWay($var)
-    {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, \Ad\NetworkWay::class);
-        $this->network_way = $arr;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.Operator operator = 31 [packed = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
-     */
-    public function getOperator()
-    {
-        return $this->operator;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.Operator operator = 31 [packed = true];</code>
-     * @param int[]|\Google\Protobuf\Internal\RepeatedField $var
-     * @return $this
-     */
-    public function setOperator($var)
-    {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, \Ad\Operator::class);
-        $this->operator = $arr;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.MediaID media_ids = 32 [packed = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
-     */
-    public function getMediaIds()
-    {
-        return $this->media_ids;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.MediaID media_ids = 32 [packed = true];</code>
-     * @param int[]|\Google\Protobuf\Internal\RepeatedField $var
-     * @return $this
-     */
-    public function setMediaIds($var)
-    {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::ENUM, \Ad\MediaID::class);
-        $this->media_ids = $arr;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated int32 version_oriented = 34 [packed = true];</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
-     */
-    public function getVersionOriented()
-    {
-        return $this->version_oriented;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated int32 version_oriented = 34 [packed = true];</code>
-     * @param int[]|\Google\Protobuf\Internal\RepeatedField $var
-     * @return $this
-     */
-    public function setVersionOriented($var)
-    {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
-        $this->version_oriented = $arr;
-
-        return $this;
-    }
-
-    /**
      * Generated from protobuf field <code>int32 advertiser_id = 37;</code>
      * @return int
      */
@@ -731,30 +556,8 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string black_white_redis_key = 48;</code>
-     * @return string
-     */
-    public function getBlackWhiteRedisKey()
-    {
-        return $this->black_white_redis_key;
-    }
-
-    /**
-     * Generated from protobuf field <code>string black_white_redis_key = 48;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setBlackWhiteRedisKey($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->black_white_redis_key = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>repeated .ad.GlobalAdObject.PotentialPlace position = 50;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * Generated from protobuf field <code>int32 position = 50;</code>
+     * @return int
      */
     public function getPosition()
     {
@@ -762,14 +565,14 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .ad.GlobalAdObject.PotentialPlace position = 50;</code>
-     * @param \Ad\GlobalAdObject\PotentialPlace[]|\Google\Protobuf\Internal\RepeatedField $var
+     * Generated from protobuf field <code>int32 position = 50;</code>
+     * @param int $var
      * @return $this
      */
     public function setPosition($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Ad\GlobalAdObject\PotentialPlace::class);
-        $this->position = $arr;
+        GPBUtil::checkInt32($var);
+        $this->position = $var;
 
         return $this;
     }
@@ -863,50 +666,6 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string cities = 60;</code>
-     * @return string
-     */
-    public function getCities()
-    {
-        return $this->cities;
-    }
-
-    /**
-     * Generated from protobuf field <code>string cities = 60;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setCities($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->cities = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>int32 censorship_rating = 61;</code>
-     * @return int
-     */
-    public function getCensorshipRating()
-    {
-        return $this->censorship_rating;
-    }
-
-    /**
-     * Generated from protobuf field <code>int32 censorship_rating = 61;</code>
-     * @param int $var
-     * @return $this
-     */
-    public function setCensorshipRating($var)
-    {
-        GPBUtil::checkInt32($var);
-        $this->censorship_rating = $var;
-
-        return $this;
-    }
-
-    /**
      * Generated from protobuf field <code>int64 ad_budget = 62;</code>
      * @return int|string
      */
@@ -929,45 +688,45 @@ class GlobalAdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string oriented_redis_key = 63;</code>
+     * Generated from protobuf field <code>string union_app_id = 64;</code>
      * @return string
      */
-    public function getOrientedRedisKey()
+    public function getUnionAppId()
     {
-        return $this->oriented_redis_key;
+        return $this->union_app_id;
     }
 
     /**
-     * Generated from protobuf field <code>string oriented_redis_key = 63;</code>
+     * Generated from protobuf field <code>string union_app_id = 64;</code>
      * @param string $var
      * @return $this
      */
-    public function setOrientedRedisKey($var)
+    public function setUnionAppId($var)
     {
         GPBUtil::checkString($var, True);
-        $this->oriented_redis_key = $var;
+        $this->union_app_id = $var;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>repeated .ad.CreativeObject creative = 66;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * Generated from protobuf field <code>int32 union_alliance_type = 65;</code>
+     * @return int
      */
-    public function getCreative()
+    public function getUnionAllianceType()
     {
-        return $this->creative;
+        return $this->union_alliance_type;
     }
 
     /**
-     * Generated from protobuf field <code>repeated .ad.CreativeObject creative = 66;</code>
-     * @param \Ad\CreativeObject[]|\Google\Protobuf\Internal\RepeatedField $var
+     * Generated from protobuf field <code>int32 union_alliance_type = 65;</code>
+     * @param int $var
      * @return $this
      */
-    public function setCreative($var)
+    public function setUnionAllianceType($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Ad\CreativeObject::class);
-        $this->creative = $arr;
+        GPBUtil::checkInt32($var);
+        $this->union_alliance_type = $var;
 
         return $this;
     }

@@ -34,10 +34,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
      */
     private $ad_url = '';
     /**
-     * Generated from protobuf field <code>int64 ad_throw_num = 6;</code>
-     */
-    private $ad_throw_num = 0;
-    /**
      * Generated from protobuf field <code>repeated .ad.TimeObject time = 7;</code>
      */
     private $time;
@@ -73,14 +69,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.ad.Carousel carousel = 17;</code>
      */
     private $carousel = 0;
-    /**
-     * Generated from protobuf field <code>map<string, int64> plan_by_date = 18;</code>
-     */
-    private $plan_by_date;
-    /**
-     * Generated from protobuf field <code>.ad.Distribution plan_day_type = 19;</code>
-     */
-    private $plan_day_type = 0;
     /**
      * Generated from protobuf field <code>.ad.Distribution plan_hour_type = 20;</code>
      */
@@ -134,14 +122,10 @@ class AdObject extends \Google\Protobuf\Internal\Message
      */
     private $media_ids;
     /**
-     *bool is_oriented = 33;
-     *
      * Generated from protobuf field <code>repeated int32 version_oriented = 34 [packed = true];</code>
      */
     private $version_oriented;
     /**
-     *bool is_black_white = 35;
-     *
      * Generated from protobuf field <code>repeated .ad.MaterialObject materials = 36;</code>
      */
     private $materials;
@@ -150,15 +134,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
      */
     private $advertiser_id = 0;
     /**
-     * Generated from protobuf field <code>int64 throw_num = 38;</code>
-     */
-    private $throw_num = 0;
-    /**
-     *int32 channel = 39;
-     *int32 ad_id_code = 40;
-     *int32 position_type = 41;
-     *int32 location_id = 42;
-     *
      * Generated from protobuf field <code>int32 cpm_bid_floor = 43;</code>
      */
     private $cpm_bid_floor = 0;
@@ -167,8 +142,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
      */
     private $cpc_bid_floor = 0;
     /**
-     *float discount = 45;
-     *
      * Generated from protobuf field <code>float coefficient = 46;</code>
      */
     private $coefficient = 0.0;
@@ -212,6 +185,22 @@ class AdObject extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>map<string, string> annotations = 56;</code>
      */
     private $annotations;
+    /**
+     * Generated from protobuf field <code>string cities = 60;</code>
+     */
+    private $cities = '';
+    /**
+     * Generated from protobuf field <code>int32 censorship_rating = 61;</code>
+     */
+    private $censorship_rating = 0;
+    /**
+     * Generated from protobuf field <code>int64 ad_budget = 62;</code>
+     */
+    private $ad_budget = 0;
+    /**
+     * Generated from protobuf field <code>string oriented_redis_key = 63;</code>
+     */
+    private $oriented_redis_key = '';
 
     /**
      * Constructor.
@@ -224,7 +213,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
      *     @type string $order_id
      *     @type int $information
      *     @type string $ad_url
-     *     @type int|string $ad_throw_num
      *     @type \Ad\TimeObject[]|\Google\Protobuf\Internal\RepeatedField $time
      *     @type string $monitor_urls
      *     @type string $monitor_pv_urls
@@ -234,8 +222,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
      *     @type int|string $amount_investment
      *     @type float $bidding
      *     @type int $carousel
-     *     @type array|\Google\Protobuf\Internal\MapField $plan_by_date
-     *     @type int $plan_day_type
      *     @type int $plan_hour_type
      *     @type int $create_type
      *     @type int $ad_from
@@ -250,19 +236,11 @@ class AdObject extends \Google\Protobuf\Internal\Message
      *     @type int[]|\Google\Protobuf\Internal\RepeatedField $operator
      *     @type int[]|\Google\Protobuf\Internal\RepeatedField $media_ids
      *     @type int[]|\Google\Protobuf\Internal\RepeatedField $version_oriented
-     *          bool is_oriented = 33;
      *     @type \Ad\MaterialObject[]|\Google\Protobuf\Internal\RepeatedField $materials
-     *          bool is_black_white = 35;
      *     @type int $advertiser_id
-     *     @type int|string $throw_num
      *     @type int $cpm_bid_floor
-     *          int32 channel = 39;
-     *          int32 ad_id_code = 40;
-     *          int32 position_type = 41;
-     *          int32 location_id = 42;
      *     @type int $cpc_bid_floor
      *     @type float $coefficient
-     *          float discount = 45;
      *     @type string $payment
      *     @type string $black_white_redis_key
      *     @type string $ad_content
@@ -273,6 +251,10 @@ class AdObject extends \Google\Protobuf\Internal\Message
      *     @type int $width
      *     @type int $height
      *     @type array|\Google\Protobuf\Internal\MapField $annotations
+     *     @type string $cities
+     *     @type int $censorship_rating
+     *     @type int|string $ad_budget
+     *     @type string $oriented_redis_key
      * }
      */
     public function __construct($data = NULL) {
@@ -296,7 +278,7 @@ class AdObject extends \Google\Protobuf\Internal\Message
      */
     public function setAdId($var)
     {
-        GPBUtil::checkString($var, true);
+        GPBUtil::checkString($var, True);
         $this->ad_id = $var;
 
         return $this;
@@ -386,28 +368,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->ad_url = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>int64 ad_throw_num = 6;</code>
-     * @return int|string
-     */
-    public function getAdThrowNum()
-    {
-        return $this->ad_throw_num;
-    }
-
-    /**
-     * Generated from protobuf field <code>int64 ad_throw_num = 6;</code>
-     * @param int|string $var
-     * @return $this
-     */
-    public function setAdThrowNum($var)
-    {
-        GPBUtil::checkInt64($var);
-        $this->ad_throw_num = $var;
 
         return $this;
     }
@@ -606,50 +566,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \Ad\Carousel::class);
         $this->carousel = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>map<string, int64> plan_by_date = 18;</code>
-     * @return \Google\Protobuf\Internal\MapField
-     */
-    public function getPlanByDate()
-    {
-        return $this->plan_by_date;
-    }
-
-    /**
-     * Generated from protobuf field <code>map<string, int64> plan_by_date = 18;</code>
-     * @param array|\Google\Protobuf\Internal\MapField $var
-     * @return $this
-     */
-    public function setPlanByDate($var)
-    {
-        $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::INT64);
-        $this->plan_by_date = $arr;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>.ad.Distribution plan_day_type = 19;</code>
-     * @return int
-     */
-    public function getPlanDayType()
-    {
-        return $this->plan_day_type;
-    }
-
-    /**
-     * Generated from protobuf field <code>.ad.Distribution plan_day_type = 19;</code>
-     * @param int $var
-     * @return $this
-     */
-    public function setPlanDayType($var)
-    {
-        GPBUtil::checkEnum($var, \Ad\Distribution::class);
-        $this->plan_day_type = $var;
 
         return $this;
     }
@@ -941,8 +857,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *bool is_oriented = 33;
-     *
      * Generated from protobuf field <code>repeated int32 version_oriented = 34 [packed = true];</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
@@ -952,8 +866,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *bool is_oriented = 33;
-     *
      * Generated from protobuf field <code>repeated int32 version_oriented = 34 [packed = true];</code>
      * @param int[]|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
@@ -967,8 +879,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *bool is_black_white = 35;
-     *
      * Generated from protobuf field <code>repeated .ad.MaterialObject materials = 36;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
@@ -978,8 +888,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *bool is_black_white = 35;
-     *
      * Generated from protobuf field <code>repeated .ad.MaterialObject materials = 36;</code>
      * @param \Ad\MaterialObject[]|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
@@ -1015,33 +923,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 throw_num = 38;</code>
-     * @return int|string
-     */
-    public function getThrowNum()
-    {
-        return $this->throw_num;
-    }
-
-    /**
-     * Generated from protobuf field <code>int64 throw_num = 38;</code>
-     * @param int|string $var
-     * @return $this
-     */
-    public function setThrowNum($var)
-    {
-        GPBUtil::checkInt64($var);
-        $this->throw_num = $var;
-
-        return $this;
-    }
-
-    /**
-     *int32 channel = 39;
-     *int32 ad_id_code = 40;
-     *int32 position_type = 41;
-     *int32 location_id = 42;
-     *
      * Generated from protobuf field <code>int32 cpm_bid_floor = 43;</code>
      * @return int
      */
@@ -1051,11 +932,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *int32 channel = 39;
-     *int32 ad_id_code = 40;
-     *int32 position_type = 41;
-     *int32 location_id = 42;
-     *
      * Generated from protobuf field <code>int32 cpm_bid_floor = 43;</code>
      * @param int $var
      * @return $this
@@ -1091,8 +967,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *float discount = 45;
-     *
      * Generated from protobuf field <code>float coefficient = 46;</code>
      * @return float
      */
@@ -1102,8 +976,6 @@ class AdObject extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *float discount = 45;
-     *
      * Generated from protobuf field <code>float coefficient = 46;</code>
      * @param float $var
      * @return $this
@@ -1332,6 +1204,94 @@ class AdObject extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkMapField($var, \Google\Protobuf\Internal\GPBType::STRING, \Google\Protobuf\Internal\GPBType::STRING);
         $this->annotations = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string cities = 60;</code>
+     * @return string
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * Generated from protobuf field <code>string cities = 60;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setCities($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->cities = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 censorship_rating = 61;</code>
+     * @return int
+     */
+    public function getCensorshipRating()
+    {
+        return $this->censorship_rating;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 censorship_rating = 61;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setCensorshipRating($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->censorship_rating = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int64 ad_budget = 62;</code>
+     * @return int|string
+     */
+    public function getAdBudget()
+    {
+        return $this->ad_budget;
+    }
+
+    /**
+     * Generated from protobuf field <code>int64 ad_budget = 62;</code>
+     * @param int|string $var
+     * @return $this
+     */
+    public function setAdBudget($var)
+    {
+        GPBUtil::checkInt64($var);
+        $this->ad_budget = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string oriented_redis_key = 63;</code>
+     * @return string
+     */
+    public function getOrientedRedisKey()
+    {
+        return $this->oriented_redis_key;
+    }
+
+    /**
+     * Generated from protobuf field <code>string oriented_redis_key = 63;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setOrientedRedisKey($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->oriented_redis_key = $var;
 
         return $this;
     }

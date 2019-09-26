@@ -1,5 +1,7 @@
 GRPC
 ====
+#### 下载protoc
+`https://github.com/protocolbuffers/protobuf/releases`
 
 grpc php版本客户端.   
 server: [https://glab.tagtic.cn/AdsGroup/hotniuer_n]
@@ -53,4 +55,4 @@ pecl install protoc
 `php client.php`  
 
 > -----广告信息
-  804引力-IOS-开屏-直客
+  xxxxxxxxxxxxx

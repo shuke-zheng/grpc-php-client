@@ -4,7 +4,6 @@
 
 namespace Ad;
 
-use Ad\AdObject;
 use Grpc\BaseStub;
 
 class RawAdClient extends BaseStub
@@ -45,6 +44,17 @@ class RawAdClient extends BaseStub
             '/ad.RawAd/GlobalQuery',
             $request,
             ['\Ad\GlobalReply', 'decode'],
+            $metadata,
+            $options
+        );
+    }
+
+    public function AllianceQuery(\Ad\Request $request, $metadata = [], $options = [])
+    {
+        return $this->_simpleRequest(
+            '/ad.RawAd/AllianceQuery',
+            $request,
+            ['\Ad\AllianceReply', 'decode'],
             $metadata,
             $options
         );
